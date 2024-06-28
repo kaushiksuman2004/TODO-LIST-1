@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO List</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body style="background-color: #e2e2e2;">
+    <div class="container">
+        <div class="row cd-mg-6 card text-center m-2">
+            <h1>TODO-List</h1>
+        </div>
+        <div class="row cd-mg-6 card text-center m-2">
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#ID</th>
+                    <th scope="col">Work</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="todo : ${todo}">
+                    <td th:text="${todo.id}">Mark</td>
+                    <td th:text="${todo.work}">Otto</td>
+                    <td th:text="${todo.status}">@mdo</td>
+                    <td>
+                        <a th:href="@{/todo/edit/{id}(id=${todo.id})}" class="btn btn-warning">Update</a>
+                        <a th:href="@{/todo/delete/{id}(id=${todo.id})}" class="btn btn-info">Delete</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <a th:href="@{/todo/add}" class="btn btn-primary btn-block btn-lg text-center">Add new one</a>
+        </div>
+    </div>
+</body>
+</html>
